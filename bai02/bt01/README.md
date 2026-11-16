@@ -301,83 +301,139 @@ const Main = () => {
           Khu vực đón và trả khách
           
         </Text>
+        
       </View>
 
       {/* Điểm đón */}
+      
       <View style={styles.location}>
+      
         <Text style={styles.label}>
+        
           📍 Điểm đón
+          
         </Text>
 
         <TextInput
+        
           style={styles.input}
+          
           placeholder="Nhập địa chỉ điểm đón..."
+          
           value={diemDon}
+          
           onChangeText={setDiemDon}
+          
         />
+        
       </View>
 
       {/* Điểm đến */}
+      
       <View style={styles.location}>
+      
         <Text style={styles.label}>
+        
           🏁 Điểm đến
+          
         </Text>
 
         <TextInput
+        
           style={styles.input}
+          
           placeholder="Nhập địa chỉ điểm đến..."
+          
           value={diemDen}
+          
           onChangeText={setDiemDen}
+          
         />
+        
       </View>
 
       {/* Nhập số km */}
+      
       <View style={styles.distanceBox}>
+      
   <Text style={styles.distanceLabel}>
+    
     📏 Quãng đường (km)
+    
   </Text>
 
   <TextInput
+  
     style={styles.kmInput}
+    
     placeholder="Nhập km"
+    
     keyboardType="decimal-pad"
+    
     value={km}
+    
     onChangeText={(value) => {
+    
       if (/^\d*\.?\d*$/.test(value)) {
+      
         setKm(value);
+        
       }
+      
     }}
+    
   />
 
   <Text style={styles.distanceValue}>
+    
     {km || '0'} km
+    
   </Text>
+  
 </View>
 
       {/* Chọn loại xe */}
+      
       <Text style={styles.vehicleTitle}>
+      
         🚘 Chọn loại xe
+        
       </Text>
 
       {vehicles.map((item) => (
+      
         <TouchableOpacity
+        
           key={item.name}
+          
           style={[
+          
             styles.vehicle,
+            
             loaiXe === item.name && styles.selectedVehicle
+            
           ]}
+          
           onPress={() => setLoaiXe(item.name)}
+          
         >
 
           <Text style={styles.vehicleName}>
+          
             {item.icon} {item.name}
+            
           </Text>
 
           <Text style={styles.price}>
+          
             {(
+            
               item.base +
+              
               (Number(km) || 0) * item.price
+              
             ).toLocaleString('vi-VN')}đ
+            
           </Text>
 
         </TouchableOpacity>
@@ -604,19 +660,150 @@ Hình ảnh giao diện trước khi thay đổi:
 
 Hình ảnh giao diện sau khi thay đổi:
 
-<img width="275" height="477" alt="image" src="https://github.com/user-attachments/assets/b75cf20c-b1c0-4706-9acb-3ca9004b4afa" />
+<img width="315" height="469" alt="image" src="https://github.com/user-attachments/assets/1027f993-1476-4e90-8ad4-da5ee05a0cd9" />
+
 
 3.3. Component 3
 
-Tên component: 
+Tên component: Footer.js
 
 Nội dung code: Nội dung và chức năng của code
 
+• Đặt xe • Lịch sử
+• Thông báo • Cá nhân
+
 CODE:
+
+
+import React from 'react';
+import { Text, View, StyleSheet } from 'react-native';
+
+const Footer = () => {
+  return (
+    <View style={styles.container}>
+      <View style={styles.item}>
+        <Text style={styles.icon}>🚕</Text>
+        <Text style={styles.text}>Đặt xe</Text>
+      </View>
+
+      <View style={styles.item}>
+        <Text style={styles.icon}>📋</Text>
+        <Text style={styles.text}>Lịch sử</Text>
+      </View>
+
+      <View style={styles.item}>
+        <Text style={styles.icon}>🔔</Text>
+        <Text style={styles.text}>Thông báo</Text>
+      </View>
+
+      <View style={styles.item}>
+        <Text style={styles.icon}>👤</Text>
+        <Text style={styles.text}>Cá nhân</Text>
+      </View>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    backgroundColor: 'white',
+    padding: 12,
+    borderRadius: 12,
+    borderTopWidth: 1,
+    borderColor: '#DDD',
+  },
+  item: {
+    alignItems: 'center',
+  },
+  icon: {
+    fontSize: 20,
+  },
+  text: {
+    fontSize: 12,
+    marginTop: 5,
+    color: '#333',
+  },
+});
+
+export default Footer;
+
 
 Hình ảnh giao diện trước khi thay đổi:
 
+<img width="316" height="101" alt="image" src="https://github.com/user-attachments/assets/ba21fee0-57b0-418e-965d-a5078ce84340" />
+
+
 Hình ảnh giao diện sau khi thay đổi:
+
+<img width="313" height="72" alt="image" src="https://github.com/user-attachments/assets/e0e63621-e86c-4bf4-89bc-21f06006f838" />
+
+3.4. Component 4
+
+Tên component: Home.js
+
+Nội dung code: Nội dung và chức năng của code
+
+có tác dụng tạo giao diện màn hình chính (Home Screen) của ứng dụng.
+
+CODE:
+
+
+import React from 'react';
+import {
+  View,
+  StyleSheet,
+  ScrollView
+} from 'react-native';
+
+import Header from './Header';
+import Main from './Main';
+import Footer from './Footer';
+import VehicleItem from './VehicleItem';
+
+const Home = () => {
+  return (
+    <View style={styles.container}>
+      <ScrollView
+        contentContainerStyle={styles.content}
+        showsVerticalScrollIndicator={false}
+      >
+        <Header />
+        <Main />
+        
+      </ScrollView>
+
+      <Footer />
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#EAF1F8',
+    padding: 10,
+  },
+  content: {
+    gap: 12,
+    paddingBottom: 15,
+  },
+});
+
+export default Home;
+
+
+Hình ảnh giao diện trước khi thay đổi:
+
+<img width="319" height="613" alt="image" src="https://github.com/user-attachments/assets/63fe27a7-ce9c-405b-a150-3c8e65bf1ee2" />
+
+
+Hình ảnh giao diện sau khi thay đổi:
+
+<img width="316" height="705" alt="image" src="https://github.com/user-attachments/assets/99843cda-bae8-4bf6-9e3b-bac58f34790f" />
+
 
 4. Kết luận
 
