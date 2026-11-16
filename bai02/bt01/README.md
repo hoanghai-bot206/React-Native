@@ -26,46 +26,78 @@ Xin chào! Chào mừng bạn: Hiển thị lời chào người dùng.
 
 🔔: Biểu tượng thông báo.
 
+CODE:
 
 import React from 'react';
+
 import { Text, View, StyleSheet } from 'react-native';
 
 const Header = () => {
+
   return (
+  
     <View style={styles.container}>
+    
       <Text style={styles.title}>🚗 BookingCar</Text>
+      
       <View style={styles.row}>
+      
         <Text style={styles.greeting}>Xin chào! Chào mừng bạn</Text>
+        
         <Text style={styles.notification}>🔔</Text>
+        
       </View>
+      
     </View>
+    
   );
+  
 };
 
 const styles = StyleSheet.create({
+
   container: {
+  
     width: '100%',
+    
     backgroundColor: '#1976D2',
+    
     padding: 20,
+    
     borderRadius: 12,
+    
   },
   title: {
+  
     fontSize: 24,
+    
     fontWeight: 'bold',
+    
     color: 'white',
+    
     marginBottom: 12,
+    
   },
+  
   row: {
+  
     flexDirection: 'row',
+    
     justifyContent: 'space-between',
+    
   },
   greeting: {
+  
     color: 'white',
+    
     fontSize: 15,
+    
   },
   notification: {
+  
     fontSize: 20,
   },
+  
 });
 
 export default Header;
@@ -107,107 +139,167 @@ Tính giá tiền: Tự động tính giá dựa trên loại xe và số km.
 
 Đặt xe: Kiểm tra thông tin và hiển thị thông báo xác nhận chuyến xe.
 
-
+CODE:
 
 import React, { useState } from 'react';
 
 import {
+
   Text,
+  
   View,
+  
   TextInput,
+  
   TouchableOpacity,
+  
   StyleSheet,
+  
   Alert,
+  
   ScrollView
+  
 } from 'react-native';
 
 const Main = () => {
+
   const [diemDon, setDiemDon] = useState('');
+  
   const [diemDen, setDiemDen] = useState('');
+  
   const [km, setKm] = useState('0');
+  
   const [loaiXe, setLoaiXe] = useState('Xe máy');
 
   // Danh sách loại xe và giá tiền
+  
   const vehicles = [
     {
+
       name: 'Xe máy',
+      
       icon: '🏍️',
+      
       base: 10000,
+      
       price: 2000,
     },
+    
     {
       name: 'Ô tô 4 chỗ',
+      
       icon: '🚗',
+      
       base: 20000,
+      
       price: 5000,
     },
+    
     {
       name: 'Ô tô 7 chỗ',
+      
       icon: '🚙',
+      
       base: 30000,
+      
       price: 7000,
     },
+    
   ];
 
   // Chọn loại xe
+  
   const selectedVehicle = vehicles.find(
+  
     (item) => item.name === loaiXe
   );
 
   // Tính tổng tiền
+  
   const tongTien =
+  
     selectedVehicle.base +
+    
     (Number(km) || 0) * selectedVehicle.price;
 
   // Đặt xe
+  
   const handleDatXe = () => {
+  
     if (!diemDon.trim() || !diemDen.trim()) {
+    
       Alert.alert(
+      
         'Thông báo',
+        
         'Vui lòng nhập đầy đủ điểm đón và điểm đến!'
       );
       return;
     }
 
     if (!km || Number(km) <= 0) {
+    
       Alert.alert(
+      
         'Thông báo',
+        
         'Vui lòng nhập số km hợp lệ!'
+        
       );
+      
       return;
     }
 
     Alert.alert(
+    
       'Thông tin đặt xe',
+      
       `Điểm đón: ${diemDon}\n` +
+      
       `Điểm đến: ${diemDen}\n` +
+      
       `Loại xe: ${loaiXe}\n` +
+      
       `Quãng đường: ${km} km\n` +
+      
       `Giá dự kiến: ${tongTien.toLocaleString('vi-VN')}đ`
+      
     );
+    
   };
 
   return (
+  
     <ScrollView style={styles.container}>
 
       <Text style={styles.title}>
+      
         📍 Đặt chuyến xe
+        
       </Text>
 
       <Text style={styles.subtitle}>
+      
         Nhập thông tin chuyến đi của bạn
+        
       </Text>
 
       {/* Bản đồ */}
+      
       <View style={styles.map}>
+      
         <Text style={styles.mapIcon}>🗺️</Text>
 
         <Text style={styles.mapText}>
+        
           BẢN ĐỒ MINH HỌA
+          
         </Text>
 
         <Text style={styles.mapSubText}>
+        
           Khu vực đón và trả khách
+          
         </Text>
       </View>
 
@@ -514,6 +606,17 @@ Hình ảnh giao diện sau khi thay đổi:
 
 <img width="275" height="477" alt="image" src="https://github.com/user-attachments/assets/b75cf20c-b1c0-4706-9acb-3ca9004b4afa" />
 
+3.3. Component 3
+
+Tên component: 
+
+Nội dung code: Nội dung và chức năng của code
+
+CODE:
+
+Hình ảnh giao diện trước khi thay đổi:
+
+Hình ảnh giao diện sau khi thay đổi:
 
 4. Kết luận
 
