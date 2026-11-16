@@ -1,17 +1,16 @@
 BT02 - LEARNING APP
 
 1. Thông tin bài tập
-2. 
+   
 Tên ứng dụng: LearningApp
 
 Nền tảng: React Native
 
+2. Link ứng dụng Expo
 
-4. Link ứng dụng Expo
-5. 
 Expo URL: https://snack.expo.dev/@hoanghai0501/learningapp
 
-7. Mô tả ứng dụng
+3. Mô tả ứng dụng
 
 LearningApp là ứng dụng hỗ trợ sinh viên theo dõi thông tin học tập, thống kê khóa học và quản lý tiến độ các môn học.
 
