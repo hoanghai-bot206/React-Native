@@ -221,6 +221,11 @@ image
 
 6. Kết quả đạt được
 
+Tổng quan
+
+<img width="319" height="676" alt="image" src="https://github.com/user-attachments/assets/696a3690-68a9-49bd-96c4-631d4cc63c81" />
+
+
 Xây dựng giao diện ứng dụng bán thiết bị công nghệ bằng React Native Expo.
 
 Hiển thị ít nhất 6 sản phẩm với đầy đủ tên, hình ảnh, giá và mô tả.
